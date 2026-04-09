@@ -16,11 +16,13 @@ app.post("/analyze", async (req, res) => {
       },
       body: JSON.stringify(req.body),
     });
-    const data = await response.json();
-    res.json(data);
+
+    const text = await response.text();
+    res.setHeader("Content-Type", "application/json");
+    res.send(text);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-app.listen(3001, () => console.log("Server running on port 3001"));
+app.listen(process.env.PORT || 3001, () => console.log("Server running"));
