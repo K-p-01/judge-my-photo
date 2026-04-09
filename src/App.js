@@ -84,7 +84,6 @@ const css = `
     padding: 40px 24px 80px;
   }
 
-  /* HEADER */
   .header {
     margin-bottom: 56px;
     border-bottom: 1px solid var(--border);
@@ -104,10 +103,7 @@ const css = `
     line-height: 1;
     color: var(--text);
   }
-  .header h1 em {
-    font-style: italic;
-    color: #fff;
-  }
+  .header h1 em { font-style: italic; color: #fff; }
   .header-sub {
     margin-top: 14px;
     font-size: 13px;
@@ -117,7 +113,6 @@ const css = `
     line-height: 1.6;
   }
 
-  /* STEP LABEL */
   .step-label {
     font-size: 10px;
     letter-spacing: 3px;
@@ -135,7 +130,6 @@ const css = `
     background: var(--border);
   }
 
-  /* UPLOAD */
   .upload-area {
     border: 1px dashed #2a2a2a;
     border-radius: 16px;
@@ -169,8 +163,7 @@ const css = `
   .photo-chip img { width: 100%; height: 100%; object-fit: cover; }
   .photo-chip-num {
     position: absolute;
-    bottom: 4px;
-    left: 4px;
+    bottom: 4px; left: 4px;
     background: rgba(0,0,0,0.75);
     font-size: 9px;
     color: #aaa;
@@ -194,7 +187,6 @@ const css = `
   }
   .photo-chip:hover .photo-chip-del { opacity: 1; }
 
-  /* JUDGE GRID */
   .judge-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -227,12 +219,7 @@ const css = `
   .judge-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
   .judge-subtitle { font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; }
   .judge-desc { font-size: 12px; color: #666; line-height: 1.5; font-weight: 300; }
-  .judge-dims {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 10px;
-  }
+  .judge-dims { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
   .judge-dim {
     font-size: 10px;
     background: rgba(255,255,255,0.04);
@@ -241,12 +228,8 @@ const css = `
     padding: 2px 8px;
     border-radius: 20px;
   }
-  .judge-card.selected .judge-dim {
-    border-color: rgba(255,255,255,0.1);
-    color: #777;
-  }
+  .judge-card.selected .judge-dim { border-color: rgba(255,255,255,0.1); color: #777; }
 
-  /* ANALYZE BTN */
   .analyze-btn {
     width: 100%;
     padding: 18px;
@@ -265,14 +248,9 @@ const css = `
   .analyze-btn:hover:not(:disabled) { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,255,255,0.1); }
   .analyze-btn:disabled { opacity: 0.25; cursor: not-allowed; transform: none; box-shadow: none; }
 
-  /* LOADING */
-  .loading-state {
-    text-align: center;
-    padding: 60px 0;
-  }
+  .loading-state { text-align: center; padding: 60px 0; }
   .loading-orb {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border-radius: 50%;
     border: 1px solid var(--border);
     border-top-color: var(--text);
@@ -289,7 +267,6 @@ const css = `
   }
   .loading-sub { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
 
-  /* RESULTS */
   .results-header {
     display: flex;
     align-items: flex-end;
@@ -298,12 +275,7 @@ const css = `
     flex-wrap: wrap;
     gap: 12px;
   }
-  .results-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-style: italic;
-    color: var(--text);
-  }
+  .results-title { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; color: var(--text); }
   .results-judge-badge {
     display: flex;
     align-items: center;
@@ -344,7 +316,6 @@ const css = `
   }
   .result-row:hover { border-color: #2a2a2a; }
   .result-row.top { border-color: var(--judge-color); }
-
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-8px); }
     to { opacity: 1; transform: translateX(0); }
@@ -356,8 +327,7 @@ const css = `
   .result-row:nth-child(5) { animation-delay: 0.33s; }
 
   .result-img {
-    width: 110px;
-    height: 130px;
+    width: 110px; height: 130px;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--border);
@@ -366,12 +336,7 @@ const css = `
   .result-img img { width: 100%; height: 100%; object-fit: cover; }
 
   .result-body { flex: 1; }
-  .result-rank-line {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
+  .result-rank-line { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .rank-badge {
     font-size: 10px;
     letter-spacing: 2px;
@@ -513,12 +478,12 @@ Respond ONLY with raw JSON (no markdown, no backticks):
 Rules:
 - index is 0-based
 - rank 1 = best for this judge's criteria
-- overallScore 0–100
-- dimension scores 0–100
-- Be ruthlessly specific, not generic — channel the judge's actual priorities
+- overallScore 0-100
+- dimension scores 0-100
+- Be ruthlessly specific, not generic
 - Sort photos array by rank ascending`;
 
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("https://judge-backend-9kt5.onrender.com/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -557,7 +522,6 @@ Rules:
 
         {!results && !loading && (
           <>
-            {/* STEP 1 */}
             <div className="step-label">Step 01 — Upload photos</div>
             <div
               className={`upload-area ${drag ? "drag" : ""}`}
@@ -585,7 +549,6 @@ Rules:
               )}
             </div>
 
-            {/* STEP 2 */}
             <div className="step-label">Step 02 — Choose your judge</div>
             <div className="judge-grid">
               {JUDGES.map(j => (
@@ -658,9 +621,7 @@ Rules:
                       <span className="photo-ref">Photo {p.index + 1}</span>
                       <span className="overall-score">{p.overallScore}<sub>/100</sub></span>
                     </div>
-
                     <div className="result-headline">"{p.headline}"</div>
-
                     <div className="dim-scores">
                       {p.dimensions?.map(d => (
                         <div key={d.name} className="dim-row">
@@ -672,9 +633,7 @@ Rules:
                         </div>
                       ))}
                     </div>
-
                     <div className="result-verdict">{p.verdict}</div>
-
                     <div className="tip-box">
                       <span>→ Fix: </span>{p.tip}
                     </div>
